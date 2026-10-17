@@ -1,4 +1,20 @@
-.DS_Store
-_site/
-node_modules/
-*.log
+# Only explicitly listed website and publication files enter this repository.
+*
+!.gitignore
+!.nojekyll
+!index.html
+!styles.css
+!app.js
+!CNAME
+!assets/
+assets/*
+!assets/damla.svg
+!assets/bahce.svg
+!sunum/
+sunum/*
+!sunum/index.html
+!.github/
+.github/*
+!.github/workflows/
+.github/workflows/*
+!.github/workflows/pages.yml
