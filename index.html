@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7ef">
+  <meta name="description" content="Konyaaltı Fahrettin Sert İlkokulu 4/A öğrencilerinin su tasarrufu ve yağmur suyu hasadı projesi. Damla ile keşfet, oyna ve suyu koru!">
+  <title>Damla’nın Yolculuğu — Küçük damlalar, büyük değişimler.</title>
+  <link rel="icon" type="image/svg+xml" href="assets/damla.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#icerik">İçeriğe geç</a>
+  <header class="header wrap">
+    <a class="brand" href="#" aria-label="Damla’nın Yolculuğu anasayfa"><img src="assets/damla.svg" alt="" width="42" height="48"><span>damla’nın<span>yolculuğu<span class="brand-dot">.</span></span></span></a>
+    <nav aria-label="Ana menü"><a href="#projemiz">Projemiz</a><a href="#biz-kimiz">Biz kimiz?</a><a href="#oyna">Oyna & öğren</a><a class="nav-cta" href="sunum/" target="_blank" rel="noopener">Sunumumuz <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main id="icerik">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="little-sun" aria-hidden="true">✳</span> 4/A’DAN GELECEĞE BİR DAMLA</div>
+        <h1 id="hero-title">Küçük damlalar.<br><span>Büyük <span class="underlined">değişimler.<svg viewBox="0 0 360 18" aria-hidden="true"><path d="M4 11 Q170 -3 354 10 M28 16 Q180 5 328 14"/></svg></span></span></h1>
+        <p>Bir yağmur damlası dünyayı değiştirebilir mi?<br>Bizce birlikte yapabiliriz! Suyu korumak için<br class="desktop-break"> çıktığımız bu yolculukta sen de bize katıl.</p>
+        <div class="hero-actions"><a class="button primary" href="#projemiz">Yolculuğu keşfet <span aria-hidden="true">↓</span></a><a class="text-link" href="sunum/" target="_blank" rel="noopener"><span class="play" aria-hidden="true">▶</span> Sunumumuzu izle</a></div>
+        <div class="school-line"><span aria-hidden="true">✎</span> Konyaaltı Fahrettin Sert İlkokulu <b>·</b> 4/A</div>
+      </div>
+      <div class="hero-art">
+        <span class="art-note note-top">Her damlanın<br>bir hikâyesi var! <span aria-hidden="true">↘</span></span>
+        <img class="journey-art" src="assets/bahce.svg" alt="Bulutlardan okul çatısına düşen yağmur, olukla kapalı depoya taşınıyor; depodaki su çiçeklere hayat veriyor. Temsili çizim." width="680" height="570">
+        <div class="hello"><img src="assets/damla.svg" width="54" height="62" alt=""><span>Merhaba, ben Damla!<small>Birlikte güzel şeyler yapacağız.</small></span><span aria-hidden="true">✦</span></div>
+        <span class="art-note note-bottom">Yağmurdan bahçeye,<br>hayata bir hediye.</span>
+      </div>
+    </section>
+
+    <div class="ribbon" aria-label="Projemizin değerleri"><div><span>SUYU KORU</span><b aria-hidden="true">✳</b><span>YAĞMURU DEĞERLENDİR</span><b aria-hidden="true">✳</b><span>BİRLİKTE ÖĞREN</span><b aria-hidden="true">✳</b><span>GELECEĞİ YEŞERT</span><b aria-hidden="true">✳</b></div></div>
+
+    <section id="projemiz" class="section wrap">
+      <div class="section-intro"><div><p class="eyebrow">BULUTTAN ÇİÇEĞE</p><h2>Bir damlanın <em>yeni görevi.</em></h2></div><p>Yağmur suyu hasadı, yağmuru toplamak ve<br class="desktop-break"> daha sonra uygun işlerde kullanmak demek.<br>Gelin, bu küçük yolculuğu birlikte keşfedelim.</p></div>
+      <div class="route" aria-label="Yağmur suyunun beş durağı">
+        <button class="stop active" data-step="0" aria-pressed="true"><span class="stop-art roof" aria-hidden="true">⌂<i>💧</i></span><span class="step-index">01</span><strong>Çatı</strong><small>Yolculuk başlıyor</small></button>
+        <button class="stop" data-step="1" aria-pressed="false"><span class="stop-art pipe" aria-hidden="true">↳<i>💧</i></span><span class="step-index">02</span><strong>Oluk & boru</strong><small>Suya yol gösteriyor</small></button>
+        <button class="stop" data-step="2" aria-pressed="false"><span class="stop-art filter" aria-hidden="true">▥<i>🍃</i></span><span class="step-index">03</span><strong>Süzgeç</strong><small>Yapraklar burada kalıyor</small></button>
+        <button class="stop" data-step="3" aria-pressed="false"><span class="stop-art tank" aria-hidden="true">▤<i>💧</i></span><span class="step-index">04</span><strong>Kapalı depo</strong><small>Damlalar bir araya geliyor</small></button>
+        <button class="stop" data-step="4" aria-pressed="false"><span class="stop-art flower" aria-hidden="true">✿<i>🌱</i></span><span class="step-index">05</span><strong>Bahçe</strong><small>Çiçeklere hayat oluyor</small></button>
+      </div>
+      <div class="route-detail" aria-live="polite"><span aria-hidden="true">💧</span><p id="step-detail"><strong>İlk durak: çatı!</strong> Yağmur damlaları çatıya düşer. Çatının eğimi, suyu oluğa doğru taşır.</p><span class="tap-hint">Bir durağa dokun ↑</span></div>
+      <p class="small-note">Bu çizimler örnek bir sistemi anlatır. Kurulum, bakım ve sulama yetişkinler tarafından yapılır. Toplanan su içilmez; süzgeç suyu içilebilir hâle getirmez.</p>
+    </section>
+
+    <section id="biz-kimiz" class="team-section">
+      <div class="wrap team-grid">
+        <div class="team-visual">
+          <span class="sticker">BİRLİKTE DAHA GÜÇLÜYÜZ!</span>
+          <ul class="avatar-grid" aria-label="Proje öğrencileri">
+            <li><span class="student-avatar" style="--avatar:#fac65e;--turn:-9deg" aria-hidden="true">☻</span><span class="student-name">Elif Sare</span></li>
+            <li><span class="student-avatar" style="--avatar:#aacbb4;--turn:7deg" aria-hidden="true">☻</span><span class="student-name">Feza</span></li>
+            <li><span class="student-avatar" style="--avatar:#f4ad93;--turn:-4deg" aria-hidden="true">☻</span><span class="student-name">Zümra</span></li>
+            <li><span class="student-avatar" style="--avatar:#b8c9e8;--turn:6deg" aria-hidden="true">☻</span><span class="student-name">Deniz</span></li>
+            <li><span class="student-avatar" style="--avatar:#b8dce2;--turn:8deg" aria-hidden="true">☻</span><span class="student-name">Hira</span></li>
+            <li><span class="student-avatar" style="--avatar:#f1b9c6;--turn:-8deg" aria-hidden="true">☻</span><span class="student-name">Oğuz Kaan</span></li>
+            <li><span class="student-avatar" style="--avatar:#e2cbef;--turn:5deg" aria-hidden="true">☻</span><span class="student-name">Elif Sare</span></li>
+          </ul>
+          <span class="team-scribble">Bir sınıf dolusu fikir, bir dünya umut.</span>
+        </div>
+        <div class="team-copy">
+          <p class="eyebrow">BİZ KİMİZ?</p>
+          <h2>Meraklı çocuklar.<br><em>Kocaman hayaller.</em></h2>
+          <p>Biz, Antalya Konyaaltı Fahrettin Sert İlkokulu 4/A sınıfı öğrencileriyiz!</p>
+          <p>Öğretmenlerimizin rehberliğinde su tasarrufunu ve yağmur suyu hasadını keşfetmek için bir araya geliyoruz. Sorular soruyor, fikirler üretiyor ve öğrendiklerimizi paylaşıyoruz.</p>
+          <div class="teachers">
+            <h3>Bize rehberlik eden öğretmenlerimiz</h3>
+            <ul aria-label="Proje öğretmenleri">
+              <li>Eray Öğretmen</li>
+              <li>Gürdal Öğretmen</li>
+              <li>Melek Öğretmen</li>
+              <li>Saadet Öğretmen</li>
+            </ul>
+          </div>
+          <div class="team-sign"><span aria-hidden="true">♡</span> Çünkü suyu korumak, geleceği korumak.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="oyna" class="section wrap learn-grid">
+      <div class="game-panel"><p class="eyebrow">MİNİ OYUN · DAMLA’YA YARDIM ET</p><h2>Hangi işte<br><em>kullanabiliriz?</em></h2><p>Kapalı depoda topladığımız yağmur suyuna<br>uygun bir görev seç.</p><div class="answers"><button data-answer="flowers"><span aria-hidden="true">🌼</span>Çiçek sulamak</button><button data-answer="drink"><span aria-hidden="true">🥛</span>Su içmek</button><button data-answer="hands"><span aria-hidden="true">👐</span>El yıkamak</button></div><p id="game-feedback" class="feedback" role="status">Bir seçeneğe dokun. Bakalım Damla nereye gidecek?</p></div>
+      <div class="mission-panel"><div class="mission-top"><span class="eyebrow">KÜÇÜK ADIMLAR, BÜYÜK ETKİ</span><span aria-hidden="true">✳</span></div><h2>Bugünün<br>su görevi<span class="orange">.</span></h2><div class="mission-card"><span id="mission-icon" aria-hidden="true">🪥</span><h3 id="mission-title">Fırçala, musluğu kapat!</h3><p id="mission-copy">Dişlerini fırçalarken musluğu kapat. Suyu yalnızca ihtiyacın olduğunda aç.</p></div><button id="next-mission" class="text-link">Başka bir görev keşfet <span aria-hidden="true">↗</span></button></div>
+    </section>
+
+    <section class="presentation-banner wrap"><div class="presentation-icon" aria-hidden="true">▶</div><div><p class="eyebrow">HİKÂYEMİZ DEVAM EDİYOR</p><h2>Damla’yla yola çıkmaya hazır mısın?</h2><p>Animasyonlar, sorular ve oyunlarla yağmurun yolunu keşfet.</p></div><a class="button cream" href="sunum/" target="_blank" rel="noopener">Sunumumuzu aç <span aria-hidden="true">↗</span></a></section>
+
+    <section class="section wrap journal"><div class="section-intro"><div><p class="eyebrow">PROJE GÜNLÜĞÜMÜZ</p><h2>Her güzel fikir <em>bir başlangıç.</em></h2></div><p>Bu köşe, birlikte üreteceğimiz<br>çizimler ve keşiflerle büyüyecek.</p></div><div class="journal-grid"><article><span class="journal-tag">İLK ADIM</span><div class="journal-doodle" aria-hidden="true">☁ <span>↓</span> 💧</div><h3>Bir damlanın peşindeyiz</h3><p>Sunumumuzda yağmurun çatıdan bahçeye uzanan yolunu keşfediyoruz.</p><a class="text-link" href="sunum/" target="_blank" rel="noopener">Hikâyeyi izle ↗</a></article><article class="journal-soon"><span class="journal-tag">SIRADAKİ FİKRİMİZ</span><div class="journal-doodle" aria-hidden="true">✎ <span>＋</span> ✿</div><h3>Hayal et, çiz, paylaş</h3><p>Su tasarrufu afişlerimiz ve kendi çizimlerimiz için burada yer ayırdık.</p><span class="coming">Çalışmalarımızla dolacak</span></article><article class="journal-soon"><span class="journal-tag">BİRLİKTE KEŞFEDELİM</span><div class="journal-doodle" aria-hidden="true">⌕ <span>＋</span> 🌱</div><h3>Okulumuzda suyun izi</h3><p>Öğretmenimizle yapacağımız gözlemleri ve öğrendiklerimizi burada paylaşacağız.</p><span class="coming">Yeni keşiflere yer var</span></article></div></section>
+    <div class="closing wrap"><img src="assets/damla.svg" alt="" width="43" height="52"><p>Birlikte, <em>damla damla.</em></p><span aria-hidden="true">✦</span></div>
+  </main>
+  <footer class="footer wrap"><a class="footer-name" href="#">Damla’nın Yolculuğu</a><p>Konyaaltı Fahrettin Sert İlkokulu · 4/A<br>Su tasarrufu ve yağmur suyu hasadı öğrenci projesi</p><a href="#">Yukarı dön ↑</a></footer>
+</body>
+</html>

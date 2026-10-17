@@ -1,0 +1,10 @@
+{
+  "name": "damlanin-yolculugu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "4/A su tasarrufu ve yağmur suyu hasadı projesi",
+  "scripts": {
+    "check": "node --check app.js && node scripts/check.mjs",
+    "dev": "python3 -m http.server 4173 --bind 127.0.0.1"
+  }
+}
