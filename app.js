@@ -1,4 +1,5 @@
-'use strict';
+import { t, translateHome } from './assets/home-locale.js';
+translateHome();
 
 const details = [
   ['İlk durak: çatı!', 'Yağmur damlaları çatıya düşer. Çatının eğimi, suyu oluğa doğru taşır.'],
@@ -15,7 +16,7 @@ document.querySelectorAll('[data-step]').forEach(button => {
       stop.classList.toggle('active', selected);
       stop.setAttribute('aria-pressed', String(selected));
     });
-    const [title, copy] = details[Number(button.dataset.step)];
+    const [title, copy] = details[Number(button.dataset.step)].map(t);
     const output = document.getElementById('step-detail');
     const strong = document.createElement('strong');
     strong.textContent = title;
@@ -35,8 +36,8 @@ document.querySelectorAll('[data-answer]').forEach(button => {
     button.classList.add(correct ? 'correct' : 'wrong');
     button.setAttribute('aria-pressed', 'true');
     document.getElementById('game-feedback').textContent = correct
-      ? 'Harika! Çiçekleri görevli yetişkin sulayabilir. Damla’ya yeni bir görev buldun! 🌼'
-      : 'Bir kez daha düşünelim! Bu suyu içmeyiz ve el yıkamada kullanmayız. Süzgeç, suyu içilebilir yapmaz.';
+      ? t('Harika! Çiçekleri görevli yetişkin sulayabilir. Damla’ya yeni bir görev buldun! 🌼')
+      : t('Bir kez daha düşünelim! Bu suyu içmeyiz ve el yıkamada kullanmayız. Süzgeç, suyu içilebilir yapmaz.');
     if (correct && !celebrated) {
       celebrated = true;
       celebrate();
@@ -58,8 +59,8 @@ document.getElementById('next-mission').addEventListener('click', () => {
   mission = (mission + 1) % missions.length;
   const [icon, title, copy] = missions[mission];
   document.getElementById('mission-icon').textContent = icon;
-  document.getElementById('mission-title').textContent = title;
-  document.getElementById('mission-copy').textContent = copy;
+  document.getElementById('mission-title').textContent = t(title);
+  document.getElementById('mission-copy').textContent = t(copy);
 });
 
 function celebrate() {
