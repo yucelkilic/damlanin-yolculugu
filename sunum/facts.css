@@ -1,0 +1,29 @@
+.climate-board{padding:20px 24px}
+.climate-board .sun-symbol{font-size:36px;margin:0}
+.climate-number{text-align:center;font:800 clamp(32px,4cqw,54px) Manrope,sans-serif;color:var(--green);line-height:1.1}
+.climate-number small,.downpour-card strong small{font-size:.42em}
+.climate-source{text-align:center;color:#748774;font-size:10px;margin:4px 0 10px}
+.bucket-comparison{background:#f8f5e9;border-radius:14px;padding:9px 12px}
+.bucket-comparison .bucket-row{min-height:68px;gap:clamp(3px,.7cqw,9px);align-items:flex-end}
+.bucket-comparison .bucket{width:clamp(20px,4.4cqw,42px);height:clamp(44px,7cqw,68px);--fill:65%;animation:bucket-bob 2.8s var(--delay) ease-in-out infinite alternate}
+.bucket-comparison .bucket.empty{--fill:12%;opacity:.55}
+.bucket-comparison .bucket:after{animation-delay:var(--delay)}
+.bucket-comparison .model-label,.flood-board .model-label{font-size:11px;margin:7px 0 0}
+.climate-board>.model-note{font-size:9px;margin-top:9px}
+.flood-board{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:center}
+.rainy-days-card,.downpour-card{background:#f8f5e9;border-radius:14px;padding:15px;text-align:center}
+.rainy-days-card>p,.downpour-card p{font-size:10px;color:#718675;line-height:1.4}
+.rainy-days-card>div{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:8px}
+.rainy-days-card span{display:grid;gap:0}
+.rainy-days-card small{font-size:10px;color:#879483}
+.rainy-days-card b{font:800 37px Manrope,sans-serif;color:var(--green)}
+.rainy-days-card i{font-style:normal;color:#80a198}
+.downpour-card{display:flex;align-items:center;justify-content:center;gap:9px}
+.downpour-card img{width:40px;height:50px;animation:buddy-float 2s ease-in-out infinite}
+.downpour-card strong{font:800 28px Manrope,sans-serif;color:#287d96}
+.downpour-card p{max-width:135px}
+.flood-board .model-label,.flood-board .flood-drops,.flood-board>.model-note{grid-column:1/-1}
+.flood-board .flood-drops{text-align:center;color:#56a4ba;font-size:25px;letter-spacing:6px;animation:rain-fall 2.2s ease-in-out infinite alternate}
+.flood-board>.model-note{font-size:9px;margin:0}
+.end-thanks{display:inline-block;margin-top:14px;padding:10px 17px;border-radius:30px;background:#f7e5aa;color:#765d27;font-weight:800;letter-spacing:1.5px;font-size:12px}
+@media(max-width:780px){.climate-board{padding:20px}.climate-board .sun-symbol{display:none}.climate-number{font-size:42px}.bucket-comparison .bucket{width:clamp(18px,7vw,34px);height:55px}.bucket-comparison .bucket-row{gap:4px;min-height:65px}.flood-board{padding:14px;gap:8px}.rainy-days-card,.downpour-card{padding:10px 7px}.rainy-days-card>div{gap:8px}.rainy-days-card b{font-size:30px}.downpour-card img{width:29px;height:38px}.downpour-card strong{font-size:22px}.downpour-card p{font-size:9px}}
