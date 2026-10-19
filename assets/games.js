@@ -1,15 +1,18 @@
-import { pick, escapeHTML } from './locale.js';
-import { stops } from './story-content.js';
+import { useFeedback } from './water-uses.js?v=20261019-all-uses';
+import { pick, escapeHTML } from './locale.js?v=20261019-all-uses';
+import { stops } from './story-content.js?v=20261019-all-uses';
 
 const text = Object.fromEntries(Object.entries({
   reset:['Yeniden başla','Start again','Volver a empezar'],
   choose:['İlk durağı seç.','Choose the first stop.','Elige la primera parada.'],
   next:['Sıradaki durak hangisi?','Which stop comes next?','¿Cuál es la siguiente parada?'],
   wrongOrder:['Henüz oraya gelmedik. Önceki durağı düşün ve yeniden dene.','We’re not there yet. Think about the previous stop and try again.','Todavía no hemos llegado ahí. Piensa en la parada anterior y prueba otra vez.'],
-  ordered:['Harika! Damla bahçeye ulaştı. Beş durağı da doğru sıraladın!','Wonderful! Damla reached the garden. You put all five stops in order!','¡Genial! Damla ha llegado al jardín. ¡Has ordenado las cinco paradas!'],
-  sequenceTask:['Görevin: beni çatıdan çiçeklere ulaştır. Duraklara doğru sırayla dokun!','Your mission: take me from the roof to the flowers. Select the stops in the right order!','Tu misión: llévame del tejado a las flores. ¡Elige las paradas en orden!'],
+  ordered:['Harika! Damla kullanım noktasına ulaştı: bahçe sulama, klozet sifonları veya okul temizliği. Beş durağı da doğru sıraladın!','Wonderful! Damla reached a point of use: garden watering, toilet flushing or school cleaning. You put all five stops in order!','¡Genial! Damla llegó a un punto de uso: riego, descarga del WC o limpieza del colegio. ¡Has ordenado las cinco paradas!'],
+  sequenceTask:['Görevin: beni çatıdan kullanım noktasına ulaştır. Suyu bahçede, klozet sifonlarında ve temizlikte değerlendirebiliriz.','Your mission: take me from the roof to a point of use. Water can serve the garden, toilet cisterns and cleaning.','Tu misión: llévame del tejado a un punto de uso. El agua puede servir para el jardín, las cisternas del WC y la limpieza.'],
   spotTask:['Görevin: resimdeki iki hatayı bul. Şüpheli yerlere dokun!','Your mission: find two mistakes in the picture. Select the suspicious places!','Tu misión: encuentra dos errores en la imagen. ¡Pulsa en los lugares sospechosos!'],
-  spotAlt:['Okul bahçesinde iki kapalı yağmur suyu deposu, bir boru ve çocuk olan oyun çizimi.','Game illustration of a school garden with two covered rainwater tanks, a pipe and a child.','Ilustración de un jardín escolar con dos depósitos cerrados, una tubería y un niño.'],
+  spotAlt:['Okulda depodan klozet rezervuarlarına bağlı kapalı boru, bitkileri sulayan yetişkin, boşa akan bir boru ve yağmur suyuyla el yıkayan çocuk.','School scene with a closed tank-to-cistern pipe, an adult watering plants, a leaking pipe and a child washing hands with rainwater.','Escena escolar con una tubería cerrada del depósito a las cisternas, una adulta regando, una tubería que pierde agua y un niño lavándose con lluvia.'],
+  toiletLabel:['Klozetlere giden suyu incele','Inspect the water supplied to toilets','Examina el agua que llega al WC'],
+  toiletUse:['Bu doğru bir kullanım! Kapalı boru, depodaki suyu klozet rezervuarlarına taşıyor. Su sifonlarda kullanılabilir.','This is a correct use! A closed pipe supplies stored water to toilet cisterns for flushing.','¡Este uso es correcto! Una tubería cerrada lleva el agua guardada a las cisternas del WC para la descarga.'],
   leakLabel:['Soldaki boruyu incele','Inspect the pipe on the left','Examina la tubería de la izquierda'],
   handsLabel:['Sağdaki su kullanımını incele','Inspect how water is used on the right','Examina el uso del agua a la derecha'],
   leak:['Birinci hata: boru boşa akıyor! Suyu kapalı toplama sistemine yönlendirmek gerekir. Bağlantıyı bir yetişkin düzeltir.','A mistake: the pipe is spilling water! It should lead into the covered collection system. An adult repairs the connection.','¡Un error: la tubería desperdicia agua! Debe conducirla al sistema cerrado de recogida. Un adulto arregla la conexión.'],
@@ -18,7 +21,7 @@ const text = Object.fromEntries(Object.entries({
   lookAgain:['Buraya bir daha bak. Boşa akan suyu ve uygun olmayan bir kullanımı arıyoruz.','Look again. We’re looking for wasted water and an unsuitable use.','Mira otra vez. Buscamos agua desperdiciada y un uso inadecuado.'],
   hint:['İpucu göster','Show a hint','Mostrar una pista'],
   spotCount:['bulunan hata','mistakes found','errores encontrados'],
-  quizTask:['Görevin: beş soruyu cevapla. Her cevapta birlikte öğrenelim!','Your mission: answer five questions. Let’s learn from every answer!','Tu misión: responde a cinco preguntas. ¡Aprendamos con cada respuesta!'],
+  quizTask:['Görevin: altı soruyu cevapla. Her cevapta birlikte öğrenelim!','Your mission: answer six questions. Let’s learn from every answer!','Tu misión: responde a seis preguntas. ¡Aprendamos con cada respuesta!'],
   correct:['Doğru!','Correct!','¡Correcto!'],
   tryAnswer:['Birlikte öğrenelim:','Let’s learn together:','Aprendamos juntos:'],
   nextQuestion:['Sonraki soru','Next question','Siguiente pregunta'],
@@ -29,11 +32,14 @@ const text = Object.fromEntries(Object.entries({
   question:['Soru','Question','Pregunta'],
 }).map(([key, values]) => [key, pick(values)]));
 
-const question = (q, answers, correct, why) => ({q:pick(q),answers:pick(answers),correct,why:pick(why)});
+const question = (q, answers, correct, why, icons=[]) => ({q:pick(q),answers:pick(answers),correct,why:pick(why),icons});
 export const questions = [
   question(['Topladığımız yağmur suyu hangi işte kullanılabilir?','What can collected rainwater be used for?','¿Para qué sirve el agua de lluvia recogida?'],
     [['Çiçekleri sulamak','Su içmek','El yıkamak'],['Watering flowers','Drinking','Washing hands'],['Regar flores','Beber','Lavarse las manos']],0,
-    ['Görevli yetişkin bu suyu çiçekleri sulamakta kullanabilir. İçmeyiz ve el yıkamada kullanmayız.','The responsible adult can use it to water flowers. We do not drink it or wash our hands with it.','El adulto responsable puede regar las flores con ella. No la bebemos ni nos lavamos las manos con ella.']),
+    [useFeedback,useFeedback,useFeedback],['flowers','drink','hands']),
+  question(['Toplanan yağmur suyu WC’de nasıl kullanılabilir?','How can collected rainwater be used in the WC?','¿Cómo puede usarse el agua de lluvia recogida en el WC?'],
+    [['El yıkamak için','Klozet rezervuarı ve sifonu için','Su içmek için'],['For washing hands','For toilet cisterns and flushing','For drinking'],['Para lavarse las manos','Para la cisterna y la descarga del WC','Para beber']],1,
+    ['Uygun tesisatla depodan klozet rezervuarlarına su verilebilir. Bu su sifonda kullanılır; el yıkamak ve içmek için kullanılmaz. Sistemi yetişkinler kurar ve kullanır.','Suitable plumbing can supply toilet cisterns from the tank. This water is used for flushing, not for handwashing or drinking. Adults install and operate the system.','Una instalación adecuada puede llevar agua del depósito a las cisternas del WC. Se usa para la descarga, no para lavarse las manos ni beber. Los adultos instalan y utilizan el sistema.'],['hands','toilet','drink']),
   question(['Yaprak süzgeci ne yapar?','What does the leaf screen do?','¿Qué hace el filtro de hojas?'],
     [['Suyu içilebilir yapar','Yaprak ve iri parçaları tutar','Yağmur yağdırır'],['Makes water safe to drink','Catches leaves and large pieces','Makes it rain'],['Hace potable el agua','Retiene hojas y trozos grandes','Hace que llueva']],1,
     ['Süzgeç iri parçaları tutar; suyu içilebilir hâle getirmez.','The screen catches large pieces; it does not make water safe to drink.','El filtro retiene trozos grandes, pero no hace potable el agua.']),
@@ -58,7 +64,7 @@ export function celebrate(parent=document.body) {
 }
 const buddy = message => `<div class="game-buddy"><img src="${new URL('./damla.svg',import.meta.url)}" alt="" width="48" height="58"><p>${escapeHTML(message)}</p></div>`;
 const announce = (root, message, success=false) => { const out=root.querySelector('.game-status');out.textContent=message;out.classList.toggle('success',success); };
-const icons=['⌂','↳','🍃','▤','🌼'];
+const icons=['⌂','↳','🍃','▤','🌼 🚽'];
 export function mountGame(root, kind) {
   root.replaceChildren();
   if(kind==='sequence') return sequenceGame(root);
@@ -80,7 +86,7 @@ function sequenceGame(root) {
 }
 function spotGame(root) {
   const found=new Set();
-  root.innerHTML=`${buddy(text.spotTask)}<div class="spot-scene"><img src="${new URL('./games/hatalari-bul.webp',import.meta.url)}" alt="${escapeHTML(text.spotAlt)}" width="1672" height="941"><button class="hotspot leak" data-error="leak" aria-label="${text.leakLabel}"><span>✓</span></button><button class="hotspot hands" data-error="hands" aria-label="${text.handsLabel}"><span>✓</span></button></div><div class="spot-tools"><b class="spot-count">0 / 2 ${text.spotCount}</b><button class="game-hint">${text.hint}</button></div><p class="game-status" role="status">${text.spotTask}</p><button class="game-reset">↻ ${text.reset}</button>`;
+  root.innerHTML=`${buddy(text.spotTask)}<div class="spot-scene"><img src="${new URL('./games/hatalari-bul-wc.webp',import.meta.url)}" alt="${escapeHTML(text.spotAlt)}" width="1672" height="941"><button class="hotspot leak" data-error="leak" aria-label="${text.leakLabel}"><span>✓</span></button><button class="hotspot toilets" data-correct-use="toilet" aria-label="${text.toiletLabel}"><span>✓</span></button><button class="hotspot hands" data-error="hands" aria-label="${text.handsLabel}"><span>✓</span></button></div><div class="spot-tools"><b class="spot-count">0 / 2 ${text.spotCount}</b><button class="game-hint">${text.hint}</button></div><p class="game-status" role="status">${text.spotTask}</p><button class="game-reset">↻ ${text.reset}</button>`;
   root.querySelector('.spot-scene').addEventListener('click',event=>{if(event.target.tagName==='IMG')announce(root,text.lookAgain);});
   root.querySelectorAll('[data-error]').forEach(button=>button.addEventListener('click',()=>{
     if(found.has(button.dataset.error))return;
@@ -90,6 +96,7 @@ function spotGame(root) {
     announce(root,message,found.size===2);
     if(found.size===2)celebrate(root);
   }));
+  root.querySelector('[data-correct-use]').addEventListener('click',event=>{event.currentTarget.classList.add('explained');announce(root,text.toiletUse,true);});
   root.querySelector('.game-hint').addEventListener('click',()=>root.querySelector('.spot-scene').classList.toggle('show-hints'));
   root.querySelector('.game-reset').addEventListener('click',()=>spotGame(root));
 }
@@ -101,7 +108,7 @@ function quizGame(root) {
       root.querySelector('.game-reset').addEventListener('click',()=>quizGame(root));celebrate(root);return;
     }
     const q=questions[current];
-    root.innerHTML=`${buddy(text.quizTask)}<div class="quiz-heading"><span>${text.question} ${current+1} / ${questions.length}</span><h3>${escapeHTML(q.q)}</h3></div><div class="quiz-options">${q.answers.map((answer,i)=>`<button data-choice="${i}"><span>${String.fromCharCode(65+i)}</span>${current===0?`<img class="answer-icon" src="${new URL('./story/'+['flowers','drink','hands'][i]+'.webp',import.meta.url)}" alt="" width="40" height="40">`:''}${escapeHTML(answer)}</button>`).join('')}</div><p class="game-status" role="status"></p><button class="quiz-next" hidden>${current===questions.length-1?text.results:text.nextQuestion} →</button>`;
+    root.innerHTML=`${buddy(text.quizTask)}<div class="quiz-heading"><span>${text.question} ${current+1} / ${questions.length}</span><h3>${escapeHTML(q.q)}</h3></div><div class="quiz-options">${q.answers.map((answer,i)=>`<button data-choice="${i}"><span>${String.fromCharCode(65+i)}</span>${q.icons[i]?`<img class="answer-icon" src="${new URL('./story/'+q.icons[i]+'.webp',import.meta.url)}" alt="" width="40" height="40">`:''}${escapeHTML(answer)}</button>`).join('')}</div><p class="game-status" role="status"></p><button class="quiz-next" hidden>${current===questions.length-1?text.results:text.nextQuestion} →</button>`;
     root.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>{
       const choice=Number(button.dataset.choice),correct=choice===q.correct;
       if(correct)score++;

@@ -1,4 +1,4 @@
-import { lang, languageIndex, languagePicker, initLocale } from './locale.js';
+import { lang, languageIndex, languagePicker, initLocale } from './locale.js?v=20261019-all-uses';
 const entries = [
 ['İçeriğe geç','Skip to content','Saltar al contenido'],
 ['damla’nın','damla’s','el viaje'],['yolculuğu','journey','de damla'],
@@ -53,6 +53,21 @@ const entries = [
 ['Bulutlardan okul çatısına düşen yağmur, olukla kapalı depoya taşınıyor; depodaki su çiçeklere hayat veriyor. Temsili çizim.','Rain falls onto a school roof and travels through the gutter into a covered tank. The stored water helps flowers grow. Illustrative drawing.','La lluvia cae sobre el tejado y pasa por el canalón a un depósito cerrado. El agua guardada ayuda a crecer a las flores. Ilustración representativa.']
 ];
 entries.push(["Kullanım noktası", "Point of use", "Punto de uso"],["Bahçe sulama ve WC temizliği", "Garden watering and toilet cleaning", "Riego del jardín y limpieza del WC"],["Yeni görev: sulama ve temizlik!", "New task: watering and cleaning!", "¡Nueva misión: regar y limpiar!"],["Görevli yetişkin, biriken suyu bahçe sulamada ve WC temizliğinde kullanabilir. Böylece bu işler için daha az şebeke suyu gerekir.", "Responsible adults can use stored water for garden watering and toilet cleaning, reducing mains water needed for these tasks.", "Los adultos responsables pueden usar el agua guardada para regar el jardín y limpiar el WC, reduciendo el uso de agua de la red."],["BİRLİKTE, DAMLA DAMLA", "TOGETHER, DROP BY DROP", "JUNTOS, GOTA A GOTA"],["Yağmuru topla.", "Collect the rain.", "Recoge la lluvia."],["Yarını koru.", "Care for tomorrow.", "Cuida el mañana."],["Yolculuğumuza eşlik ettiğiniz için teşekkür ederiz.", "Thank you for joining our journey.", "Gracias por acompañarnos en este viaje."],["Yağmur damlaları bir kum saatinde birikerek gülümseyen dünyaya hayat veriyor. Yağmuru Topla, Yarını Kurtar.", "Raindrops collect inside an hourglass, bringing life to a smiling Earth. The Turkish sign says: Collect the rain, save tomorrow.", "Las gotas se reúnen en un reloj de arena y dan vida a una Tierra sonriente. El cartel en turco dice: Recoge la lluvia, salva el mañana."]);
+entries.push(
+["Güneş panelli okulun çatısından toplanan yağmur suyu kapalı depoda birikiyor; bahçe sulamada ve klozet sifonlarında kullanılıyor. Temsili çizim.", "Rainwater from the solar-panelled school roof collects in a covered tank and is used for garden watering and toilet flushing. Illustrative drawing.", "La lluvia del tejado del colegio con paneles solares se guarda en un depósito cerrado y se usa para regar y descargar el WC. Ilustración representativa."],
+["BULUTTAN KULLANIMA", "FROM CLOUD TO USE", "DE LA NUBE AL USO"],
+["Sulama, klozet sifonları ve temizlik", "Watering, toilet flushing and cleaning", "Riego, descarga del WC y limpieza"],
+["Bu çizimler örnek bir sistemi anlatır. Kurulum, bakım, sulama ve temizlik yetişkinler tarafından yapılır. Toplanan su içilmez; süzgeç suyu içilebilir hâle getirmez.", "These drawings illustrate an example system. Adults install, maintain and operate it for watering and cleaning. Collected rainwater is not for drinking; the screen does not make it potable.", "Los dibujos muestran un sistema de ejemplo. Los adultos lo instalan, mantienen y utilizan para regar y limpiar. El agua recogida no se bebe; el filtro no la hace potable."],
+["Yeni görev: sulama, sifon ve temizlik!", "New tasks: watering, flushing and cleaning!", "¡Nuevas misiones: regar, descargar y limpiar!"],
+["Yağmur suyunun kullanım alanları", "Uses for collected rainwater", "Usos del agua de lluvia recogida"],
+["uygun görevleri keşfet.", "discover suitable uses.", "descubre usos adecuados."],
+["Klozet sifonu", "Toilet flushing", "Descarga del WC"],
+["Okul temizliği", "School cleaning", "Limpieza del colegio"],
+["Bir seçenek seç. Birden fazla uygun kullanım var!", "Choose an option. More than one use is suitable!", "Elige una opción. ¡Hay varios usos adecuados!"],
+["Damla’yı sulama, klozet sifonu ve temizlik için kullanım noktasına ulaştır.", "Help Damla reach a point of use for watering, toilet flushing and cleaning.", "Lleva a Damla a un punto de uso para regar, descargar el WC y limpiar."],
+["Altı soruyu cevapla, her cevapta yeni bir şey öğren.", "Answer six questions and learn from every answer.", "Responde a seis preguntas y aprende con cada respuesta."],
+["Sunumumuzda suyun çatıdan bahçeye, klozet sifonlarına ve okul temizliğine uzanan yolunu keşfediyoruz.", "Our presentation follows water from the roof to the garden, toilet cisterns and school cleaning.", "Nuestra presentación sigue el agua del tejado al jardín, las cisternas del WC y la limpieza del colegio."]
+);
 const dictionary=new Map(entries.map(row=>[row[0],row]));
 export const t = value => dictionary.get(value)?.[languageIndex] ?? value;
 export function translateHome(){

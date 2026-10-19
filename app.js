@@ -1,4 +1,5 @@
-import { t, translateHome } from './assets/home-locale.js';
+import { waterUses, suitableUseIds, useFeedback, unsuitableUseFeedback } from './assets/water-uses.js?v=20261019-all-uses';
+import { t, translateHome } from './assets/home-locale.js?v=20261019-all-uses';
 translateHome();
 
 const details = [
@@ -6,7 +7,7 @@ const details = [
   ['Oluk ve boru suya yol gösterir.', 'Çatının kenarındaki oluk damlaları toplar. Boru, suyu aşağıdaki toplama sistemine taşır.'],
   ['Yapraklar süzgeçte kalır.', 'Süzgeç yaprakları ve iri parçaları tutar. Ancak suyu içilebilir yapmaz; bu suyu içmeyiz.'],
   ['Damlalar kapalı depoda buluşur.', 'Su daha sonra kullanılmak üzere birikir. Depo kapalı tutulur; kapağını ve musluğunu yalnızca görevli yetişkin kullanır.'],
-  ['Yeni görev: sulama ve temizlik!', 'Görevli yetişkin, biriken suyu bahçe sulamada ve WC temizliğinde kullanabilir. Böylece bu işler için daha az şebeke suyu gerekir.']
+  ['Yeni görev: sulama, sifon ve temizlik!', useFeedback]
 ];
 
 document.querySelectorAll('[data-step]').forEach(button => {
@@ -24,6 +25,17 @@ document.querySelectorAll('[data-step]').forEach(button => {
   });
 });
 
+const useList = document.getElementById('water-uses');
+for (const use of waterUses) {
+  const article = document.createElement('article');
+  const visual = document.createElement(use.image ? 'img' : 'span');
+  if (use.image) { visual.src = `assets/story/${use.image}.webp`; visual.alt = ''; visual.width = 72; visual.height = 72; }
+  else { visual.textContent = use.icon; visual.setAttribute('aria-hidden', 'true'); }
+  const heading = document.createElement('h3'); heading.textContent = use.label;
+  const copy = document.createElement('p'); copy.textContent = use.copy;
+  article.append(visual, heading, copy); useList.append(article);
+}
+
 let celebrated = false;
 document.querySelectorAll('[data-answer]').forEach(button => {
   button.setAttribute('aria-pressed', 'false');
@@ -32,12 +44,12 @@ document.querySelectorAll('[data-answer]').forEach(button => {
       answer.classList.remove('correct', 'wrong');
       answer.setAttribute('aria-pressed', 'false');
     });
-    const correct = button.dataset.answer === 'flowers';
+    const correct = suitableUseIds.has(button.dataset.answer);
     button.classList.add(correct ? 'correct' : 'wrong');
     button.setAttribute('aria-pressed', 'true');
     document.getElementById('game-feedback').textContent = correct
-      ? t('Harika! Çiçekleri görevli yetişkin sulayabilir. Damla’ya yeni bir görev buldun! 🌼')
-      : t('Bir kez daha düşünelim! Bu suyu içmeyiz ve el yıkamada kullanmayız. Süzgeç, suyu içilebilir yapmaz.');
+      ? useFeedback
+      : unsuitableUseFeedback;
     if (correct && !celebrated) {
       celebrated = true;
       celebrate();

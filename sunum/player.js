@@ -1,6 +1,6 @@
-import { lang, pick, languagePicker, initLocale, escapeHTML as esc, localized } from '../assets/locale.js';
-import { slides, ui, stops } from '../assets/story-content.js?v=20261019-hourglass';
-import { mountGame } from '../assets/games.js';
+import { lang, pick, languagePicker, initLocale, escapeHTML as esc, localized } from '../assets/locale.js?v=20261019-all-uses';
+import { slides, ui, stops } from '../assets/story-content.js?v=20261019-all-uses';
+import { mountGame } from '../assets/games.js?v=20261019-all-uses';
 
 const $=id=>document.getElementById(id);
 const gameTypes=new Set(['sequence','spot','quiz']);
@@ -41,11 +41,11 @@ function route(step){return `<div class="route-mini">${stops.map((name,i)=>`<spa
 function rain(){return `<div class="rain-layer" aria-hidden="true">${Array.from({length:22},(_,i)=>`<i style="--left:${3+i*3.4}%;--delay:${(i%7)*.24}s"></i>`).join('')}</div>`;}
 function media(slide){
   if(slide.type==='end')return `<div class="farewell-art"><img src="../assets/story/farewell-cutout.webp" alt="${esc(ui.farewellAlt)}" width="1024" height="1536" fetchpriority="high"></div>`;
-  const water=slide.type==='process'||slide.type==='overview';
+  const water=(slide.type==='process'||slide.type==='overview')&&!slide.transparent;
   const path=water?'<svg class="water-path" viewBox="0 0 1672 941" aria-hidden="true"><path d="M220 200 830 370 865 422 1008 435 1030 507 1100 555 1130 760 1350 836"/></svg>':'';
   const points=[[28,27],[57,44],[62,51],[70,70]];
   const focus=slide.type==='process'?`<span class="focus-pulse" aria-hidden="true" style="left:${points[slide.step][0]}%;top:${points[slide.step][1]}%"></span>`:'';
-  return `<div class="scene-media"><div class="scene-art"><img src="../assets/story/${slide.image}.webp" alt="${esc(ui.illustration)}" width="1672" height="941">${path}${water?'<span class="traveller" aria-hidden="true"><img src="../assets/damla.svg" alt=""></span>':''}${focus}${['question','overview'].includes(slide.type)||slide.step===0?rain():''}</div></div>`;
+  return `<div class="scene-media ${slide.transparent?'transparent-media':''}"><div class="scene-art"><img src="../assets/story/${slide.image}.webp" alt="${esc(ui.illustration)}" width="1672" height="941">${path}${water?'<span class="traveller" aria-hidden="true"><img src="../assets/damla.svg" alt=""></span>':''}${focus}${['question','overview'].includes(slide.type)||slide.step===0?rain():''}</div></div>`;
 }
 const kicker=slide=>slide.step!==undefined?`${String(slide.step+1).padStart(2,'0')} / 05 · ${stops[slide.step].toLocaleUpperCase(lang)}`:ui.project;
 const copy=slide=>`<div class="scene-copy"><p class="scene-kicker">${esc(kicker(slide))}</p><${slide.type==='cover'?'h1':'h2'}>${esc(slide.title)}</${slide.type==='cover'?'h1':'h2'}><p class="scene-body">${esc(slide.body)}</p>${slide.type==='process'&&slide.step>=2||['garden','reuse','cleaning'].includes(slide.type)?`<p class="scene-safety">${esc(ui.safety)}</p>`:''}${slide.type==='cover'?'<p class="cover-tag">Fahrettin Sert İlkokulu<br>Konyaaltı / Antalya</p>':''}${slide.type==='end'?`<strong class="end-thanks">${esc(ui.thanks)}</strong><div class="end-actions"><a href="${localized('../oyunlar/')}">${esc(ui.games)} ↗</a><button id="restart">↻ ${esc(ui.backStart)}</button></div><a class="website" href="${localized('../')}">yagmursuyuhasadi.org.tr</a>`:''}</div>`;

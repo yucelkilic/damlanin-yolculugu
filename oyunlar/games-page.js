@@ -1,6 +1,6 @@
-import { pick, languagePicker, initLocale } from '../assets/locale.js';
-import { ui } from '../assets/story-content.js';
-import { mountGame } from '../assets/games.js';
+import { pick, languagePicker, initLocale } from '../assets/locale.js?v=20261019-all-uses';
+import { ui } from '../assets/story-content.js?v=20261019-all-uses';
+import { mountGame } from '../assets/games.js?v=20261019-all-uses';
 const $=id=>document.getElementById(id);
 const titles=pick([
   {sequence:'Hasat adımlarını sırala',spot:'Resimdeki hataları bul',quiz:'Damla’nın bilgi testi'},
