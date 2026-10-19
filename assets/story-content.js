@@ -26,6 +26,7 @@ export const ui = Object.fromEntries(Object.entries({
   games:['Oyna & öğren','Play & learn','Juega y aprende'],
   gameHint:['Bu sahnede otomatik geçiş durur. Hazır olduğunda İleri’ye dokun.','Autoplay pauses here. Select Next when you are ready.','La reproducción automática se detiene aquí. Pulsa Siguiente cuando termines.'],
   finish:['Yolculuk tamam!','Journey complete!','¡Viaje completado!'],
+  farewellAlt:['Gülümseyen buluttan düşen damlalar kum saatinde birikiyor ve dünyaya hayat veriyor. Yağmuru Topla, Yarını Kurtar.','Drops from a smiling cloud collect in an hourglass and bring life to Earth. Collect the rain, save tomorrow.','Las gotas de una nube sonriente se reúnen en un reloj de arena y dan vida a la Tierra. Recoge la lluvia, salva el mañana.'],
   thanks:['TEŞEKKÜR EDERİZ','THANK YOU','GRACIAS'],
   backStart:['Başa dön','Back to the start','Volver al inicio'],
   sources:['Öğretmen notu ve kaynaklar','Teacher notes and sources','Notas para docentes y fuentes'],

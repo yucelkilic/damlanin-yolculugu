@@ -1,5 +1,5 @@
 import { lang, pick, languagePicker, initLocale, escapeHTML as esc, localized } from '../assets/locale.js';
-import { slides, ui, stops } from '../assets/story-content.js';
+import { slides, ui, stops } from '../assets/story-content.js?v=20261019-hourglass';
 import { mountGame } from '../assets/games.js';
 
 const $=id=>document.getElementById(id);
@@ -40,6 +40,7 @@ function clearScene(){clearTimeout(timer);stopSpeech();animations.forEach(animat
 function route(step){return `<div class="route-mini">${stops.map((name,i)=>`<span class="${i===step?'current':''}" ${i===step?'aria-current="step"':''}>${i+1} · ${esc(name)}</span>${i<4?'<b aria-hidden="true">→</b>':''}`).join('')}</div>`;}
 function rain(){return `<div class="rain-layer" aria-hidden="true">${Array.from({length:22},(_,i)=>`<i style="--left:${3+i*3.4}%;--delay:${(i%7)*.24}s"></i>`).join('')}</div>`;}
 function media(slide){
+  if(slide.type==='end')return `<div class="farewell-art"><img src="../assets/story/farewell-cutout.webp" alt="${esc(ui.farewellAlt)}" width="1024" height="1536" fetchpriority="high"></div>`;
   const water=slide.type==='process'||slide.type==='overview';
   const path=water?'<svg class="water-path" viewBox="0 0 1672 941" aria-hidden="true"><path d="M220 200 830 370 865 422 1008 435 1030 507 1100 555 1130 760 1350 836"/></svg>':'';
   const points=[[28,27],[57,44],[62,51],[70,70]];
