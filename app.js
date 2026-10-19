@@ -45,24 +45,6 @@ document.querySelectorAll('[data-answer]').forEach(button => {
   });
 });
 
-const missions = [
-  ['🪥', 'Fırçala, musluğu kapat!', 'Dişlerini fırçalarken musluğu kapat. Suyu yalnızca ihtiyacın olduğunda aç.'],
-  ['🔎', 'Bir damlanın izini sür!', 'Damlayan bir musluk fark edersen öğretmenine veya ailene haber ver. Küçük bir gözlem güzel bir başlangıçtır.'],
-  ['✎', 'Fikrini bir afişe dönüştür!', 'Suyu korumak için bir öneri düşün. Önerini çiz ve sınıf arkadaşlarınla paylaş.'],
-  ['🌼', 'Sulama zamanını konuş!', 'Bitkilerin ne zaman ve ne kadar suya ihtiyaç duyduğunu bir yetişkinle birlikte araştır.'],
-  ['💬', 'Öğrendiğini paylaş!', 'Yağmur suyunun çatıdan bahçeye yolunu bugün evde birine anlat. Bakalım beş durağı da hatırlayacak mısın?']
-];
-let mission = 0;
-const missionCard = document.querySelector('.mission-card');
-missionCard.setAttribute('aria-live', 'polite');
-document.getElementById('next-mission').addEventListener('click', () => {
-  mission = (mission + 1) % missions.length;
-  const [icon, title, copy] = missions[mission];
-  document.getElementById('mission-icon').textContent = icon;
-  document.getElementById('mission-title').textContent = t(title);
-  document.getElementById('mission-copy').textContent = t(copy);
-});
-
 function celebrate() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const colors = ['#f4ca67', '#6fc8df', '#83b8af', '#d88352', '#e2b6ca'];
