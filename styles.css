@@ -19,3 +19,9 @@
 @media(max-width:1100px){.header nav{gap:15px}.header .language-picker select{max-width:100px;font-size:10px}.game-hub-grid{gap:16px}}
 @media(max-width:780px){.header nav{gap:10px}.header nav>a:first-child{display:none}.header .nav-cta{font-size:10px;padding:8px}.header .language-picker select{max-width:94px;font-size:9px}.game-hub{padding-bottom:55px}.game-hub-grid{grid-template-columns:1fr}.game-hub-grid h3{font-size:20px}.game-hub-grid p{font-size:13px;min-height:0}.game-card-art{height:180px}.game-hub-grid>a{padding:20px}}
 @media(max-width:380px){.header .nav-cta{padding:7px 6px;font-size:9px}.header .language-picker select{max-width:82px;font-size:9px}}
+
+.farewell{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:center;max-width:920px;padding-block:20px 65px}
+.farewell h2{font-size:clamp(32px,4vw,48px);margin-top:17px}
+.farewell>div>p:last-child{color:var(--muted);margin-top:22px;max-width:340px}
+.farewell>img{width:100%;height:auto;display:block}
+@media(max-width:780px){.farewell{grid-template-columns:1fr;gap:30px;padding-bottom:45px;text-align:center}.farewell>img{width:min(290px,85%);margin:auto}.farewell>div>p:last-child{margin-inline:auto}}

@@ -44,3 +44,13 @@ oyunlar/*
 !.github/workflows/
 .github/workflows/*
 !.github/workflows/pages.yml
+
+!assets/story/system-solar.webp
+!assets/story/roof-solar.webp
+!assets/story/gutter-solar.webp
+!assets/story/filter-solar.webp
+!assets/story/tank-solar.webp
+!assets/story/wc.webp
+!assets/story/hero-solar.webp
+!assets/story/farewell-cutout.webp
+!assets/story/school-cleaning.webp

@@ -7,3 +7,20 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.focus-pulse{box-shadow:none}}
 .timeline button{height:24px;background:transparent;position:relative}.timeline button:before{content:'';position:absolute;left:0;right:0;top:10px;height:5px;border-radius:4px;background:#52766a}.timeline button.visited{background:transparent}.timeline button.visited:before{background:#83ab95}.timeline button[aria-current=true]{height:24px;background:transparent}.timeline button[aria-current=true]:before{height:9px;top:8px;background:#f4cf79}.game-slide.spot .game-mount{max-width:800px}.game-slide.spot .spot-scene{max-width:min(100%,44vh);margin-inline:auto}
 @media(max-width:780px){.game-slide.spot .spot-scene{max-width:100%}}
+
+/* Transparent illustrations share the paper background without a frame. */
+.reuse .scene-media{background:transparent;border-radius:0;box-shadow:none;aspect-ratio:3/2}
+.reuse .scene-art>img{object-fit:contain}
+.scene.end{display:grid;grid-template-columns:52% 43%;gap:5%;padding:3% 5%;align-items:center;align-content:stretch}
+.end .scene-copy{width:auto;padding:0;align-self:center}
+.end h2{font-size:clamp(32px,4.3cqw,68px)}
+.end .scene-media{position:relative;inset:auto;width:100%;height:100%;aspect-ratio:auto;background:transparent;border-radius:0;box-shadow:none;min-height:0}
+.end .scene-media:after{display:none}
+.end .scene-art{transform:none;animation:none}
+.end .scene-art>img{object-fit:contain}
+@media(max-width:780px){
+ .scene.end{display:flex;padding:30px 25px;gap:24px;align-items:stretch;min-height:0}
+ .end .scene-copy{width:100%;padding:0}
+ .end h2{font-size:38px}
+ .end .scene-media{position:relative;inset:auto;height:auto;aspect-ratio:2/3;max-width:330px;margin:0 auto;flex:none}
+}

@@ -6,7 +6,7 @@ const details = [
   ['Oluk ve boru suya yol gösterir.', 'Çatının kenarındaki oluk damlaları toplar. Boru, suyu aşağıdaki toplama sistemine taşır.'],
   ['Yapraklar süzgeçte kalır.', 'Süzgeç yaprakları ve iri parçaları tutar. Ancak suyu içilebilir yapmaz; bu suyu içmeyiz.'],
   ['Damlalar kapalı depoda buluşur.', 'Su daha sonra kullanılmak üzere birikir. Depo kapalı tutulur; kapağını ve musluğunu yalnızca görevli yetişkin kullanır.'],
-  ['Yeni görev: çiçeklere su olmak!', 'Görevli yetişkin, biriken suyu çiçekleri ve süs bitkilerini sulamak için kullanabilir. Böylece bu iş için daha az şebeke suyu gerekir.']
+  ['Yeni görev: sulama ve temizlik!', 'Görevli yetişkin, biriken suyu bahçe sulamada ve WC temizliğinde kullanabilir. Böylece bu işler için daha az şebeke suyu gerekir.']
 ];
 
 document.querySelectorAll('[data-step]').forEach(button => {
