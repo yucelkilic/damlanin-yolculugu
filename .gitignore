@@ -19,6 +19,7 @@ assets/*
 assets/story/*
 !assets/story/cover.webp
 !assets/story/system.webp
+!assets/story/hero-cutout.png
 !assets/story/garden.webp
 !assets/story/school.webp
 !assets/story/hands.webp
