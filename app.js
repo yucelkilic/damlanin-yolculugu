@@ -1,5 +1,6 @@
+import './assets/hero-water.js?v=20261022-school-art';
 import { waterUses, suitableUseIds, useFeedback, unsuitableUseFeedback } from './assets/water-uses.js?v=20261019-all-uses';
-import { t, translateHome } from './assets/home-locale.js?v=20261022-school-name';
+import { t, translateHome } from './assets/home-locale.js?v=20261022-school-art';
 translateHome();
 
 const details = [
