@@ -62,3 +62,9 @@ oyunlar/*
 !assets/hero-water.js
 
 !assets/story/system-school.webp
+!assets/story/project-installation.webp
+!assets/gallery/
+assets/gallery/*
+!assets/gallery/tank-garden.webp
+!assets/gallery/tank-fenced.webp
+!assets/gallery/school.webp

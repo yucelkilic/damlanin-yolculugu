@@ -34,3 +34,23 @@
 .transparent-media{background:transparent;box-shadow:none;border-radius:0;aspect-ratio:1.2}
 .transparent-media .scene-art{transform:none;animation:none}
 .transparent-media .scene-art>img{object-fit:contain}
+
+/* Project update: illustrated work and actual school tanks. */
+.project-media{min-width:0}
+.project-pictures{display:grid;grid-template-columns:1fr 1fr;gap:13px;height:min(40cqw,calc(100svh - 290px),510px)}
+.project-installation .project-pictures{grid-template-columns:1fr;height:auto}
+.project-photos .project-pictures{grid-template-columns:1.35fr 1fr}
+.project-pictures figure{margin:0;min-width:0;min-height:0;display:flex;flex-direction:column}
+.project-pictures img{display:block;width:100%;min-height:0;flex:1;object-fit:cover;border-radius:12px}
+.project-installation .project-pictures img{height:auto;flex:none;aspect-ratio:3/2;object-fit:contain}
+.project-pictures figcaption{font-size:clamp(11px,1.1cqw,16px);font-weight:700;line-height:1.4;margin-top:9px}
+.project-photos .project-pictures figure:first-child img{object-position:54% center}
+.project-photos .project-pictures figure:nth-child(2) img{object-position:center 62%}
+.project-media-note{font-size:11px;color:#798c81;margin-top:10px}
+@media(max-width:780px){
+ .project-pictures{height:290px}
+ .project-photos .project-pictures{grid-template-columns:1fr;height:auto}
+ .project-photos .project-pictures img{flex:none;height:auto;aspect-ratio:16/9}
+ .project-photos .project-pictures figure:nth-child(2) img{aspect-ratio:4/3;object-position:center 62%}
+ .project-pictures figcaption{font-size:12px}
+}

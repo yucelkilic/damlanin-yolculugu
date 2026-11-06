@@ -1,5 +1,5 @@
 import { lang, pick, languagePicker, initLocale, escapeHTML as esc, localized } from '../assets/locale.js?v=20261019-all-uses';
-import { slides, ui, stops } from '../assets/story-content.js?v=20261019-all-uses';
+import { slides, ui, stops } from '../assets/story-content.js?v=20261106-slide-order';
 import { mountGame } from '../assets/games.js?v=20261019-all-uses';
 
 const $=id=>document.getElementById(id);
@@ -47,6 +47,13 @@ function media(slide){
   const focus=slide.type==='process'?`<span class="focus-pulse" aria-hidden="true" style="left:${points[slide.step][0]}%;top:${points[slide.step][1]}%"></span>`:'';
   return `<div class="scene-media ${slide.transparent?'transparent-media':''}"><div class="scene-art"><img src="../assets/story/${slide.image}.webp" alt="${esc(ui.illustration)}" width="1672" height="941">${path}${water?'<span class="traveller" aria-hidden="true"><img src="../assets/damla.svg" alt=""></span>':''}${focus}${['question','overview'].includes(slide.type)||slide.step===0?rain():''}</div></div>`;
 }
+function projectMedia(slide){
+  const drawn=slide.type==='project-installation';
+  const pictures=drawn
+    ? [['../assets/story/project-installation.webp',ui.installationAlt,null]]
+    : [['../assets/gallery/tank-garden.webp',ui.firstTankAlt,ui.firstTankCaption],['../assets/gallery/tank-fenced.webp',ui.secondTankAlt,ui.secondTankCaption]];
+  return `<div class="project-media"><div class="project-pictures">${pictures.map(([src,alt,caption])=>`<figure><img src="${src}" alt="${esc(alt)}">${caption?`<figcaption>${esc(caption)}</figcaption>`:''}</figure>`).join('')}</div><p class="project-media-note">${esc(drawn?ui.projectDrawing:ui.projectPhotos)}</p></div>`;
+}
 const kicker=slide=>slide.step!==undefined?`${String(slide.step+1).padStart(2,'0')} / 05 · ${stops[slide.step].toLocaleUpperCase(lang)}`:ui.project;
 const copy=slide=>`<div class="scene-copy"><p class="scene-kicker">${esc(kicker(slide))}</p><${slide.type==='cover'?'h1':'h2'}>${esc(slide.title)}</${slide.type==='cover'?'h1':'h2'}><p class="scene-body">${esc(slide.body)}</p>${slide.type==='process'&&slide.step>=2||['garden','reuse','cleaning'].includes(slide.type)?`<p class="scene-safety">${esc(ui.safety)}</p>`:''}${slide.type==='cover'?'<p class="cover-tag">Özpınarlar Fahrettin Sert İlkokulu<br>Konyaaltı / Antalya</p>':''}${slide.type==='end'?`<strong class="end-thanks">${esc(ui.thanks)}</strong><div class="end-actions"><a href="${localized('../oyunlar/')}">${esc(ui.games)} ↗</a><button id="restart">↻ ${esc(ui.backStart)}</button></div><a class="website" href="${localized('../')}">yagmursuyuhasadi.org.tr</a>`:''}</div>`;
 
@@ -55,6 +62,9 @@ function render(){
   const game=gameTypes.has(slide.type);
   let content='';
   if(game){content=`<div class="scene-top"><div><p class="scene-kicker">${esc(ui.games)}</p><h2>${esc(slide.title.replaceAll('\n',' '))}</h2></div><p class="scene-body">${esc(slide.body)}</p></div><div class="game-mount"></div><p class="game-hint-line">${esc(ui.gameHint)}</p>`;}
+  else if(slide.type==='project-installation'||slide.type==='project-photos'){
+    content=copy(slide)+projectMedia(slide);
+  }
   else if(slide.type==='climate'){
     content=copy(slide)+`<div class="climate-board"><div class="sun-symbol" aria-hidden="true">☀</div><p class="climate-number">≈ 1.000 <small>mm / ${lang==='tr'?'yıl':lang==='es'?'año':'year'}</small></p><p class="climate-source">${esc(ui.longRain)}</p><div class="bucket-comparison" role="img" aria-label="${esc(ui.bucketStory)}"><div class="bucket-row" aria-hidden="true">${Array.from({length:10},(_,i)=>`<span class="bucket ${i>=7?'empty':''}" style="--delay:${i*.09}s"></span>`).join('')}</div><p class="model-label">${esc(ui.bucketStory)}</p></div><p class="model-note">${esc(ui.climateNote)}</p></div>`;
   }else if(slide.type==='calculator'){
