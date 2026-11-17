@@ -54,3 +54,11 @@
 .journal-photos figcaption{font-size:11px;color:var(--ink);font-weight:700;line-height:1.4;margin-top:7px}
 @media(max-width:780px){.journal-grid{grid-template-columns:1fr}.journal-photos figure:first-child img{height:320px}.journal-photos img{height:140px}}
 @media(max-width:540px){.journal-gallery{padding:19px}.journal-photos{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}.journal-photos figure:first-child{grid-column:span 2;grid-row:auto}.journal-photos figure:first-child img{height:220px}.journal-photos img{height:125px}.journal-photos figcaption{font-size:10px}}
+
+/* Presentation choices */
+.presentation-banner{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px 27px}
+.presentation-actions{grid-column:2;display:flex;flex-wrap:wrap;gap:12px}
+.presentation-actions .button{margin:0;white-space:normal;text-align:center}
+@media(max-width:1100px){.presentation-banner{grid-template-columns:49px minmax(0,1fr)}}
+@media(max-width:780px){.presentation-actions{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.presentation-actions .button{margin:0;width:100%}}
+@media(max-width:480px){.presentation-actions{grid-template-columns:1fr}}
